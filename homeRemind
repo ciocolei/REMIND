@@ -1,0 +1,69 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class homeRemind extends JFrame implements ActionListener{ 
+    // declaring and initializing all variables needed for the actionperformed method here //
+    JButton quit; 
+    JButton manage;
+    JButton addButton;
+    JButton remindersList; 
+    // creating the GUI for default/homepage here //
+    public homeRemind(String title){
+        setTitle(title);
+        JPanel content = new JPanel();
+        content.setLayout(new BorderLayout());
+        JLabel remindTitle = new JLabel(" R E M I N D ");
+        remindTitle.setFont(new java.awt.Font("Roboto", Font.BOLD, 40));
+        content.add(remindTitle, BorderLayout.NORTH);
+        JPanel remind = new JPanel();
+        remind.setLayout(new GridLayout(1,4));
+        quit = new JButton("Log Out"); 
+        quit.addActionListener(this); //closes window
+        addButton = new JButton("Add Reminder");
+        addButton.addActionListener(this); // directs to another JPanel pop-up
+        manage = new JButton("Manage Account");
+        manage.addActionListener(this); // goes back to register page for password change, name change, etc.
+        remindersList = new JButton("Reminders");
+        remindersList.addActionListener(this); // directs to default/homepage of lists
+        remind.add(remindersList); remind.add(addButton); remind.add(manage); remind.add(quit); // EXACT ORDER FROM LEFT TO RIGHT
+        content.add(remind, BorderLayout.CENTER);
+        JPanel defaultHomeRemind = new JPanel();
+        defaultHomeRemind.setLayout(new GridLayout(1,3));
+        JLabel message = new JLabel("Message");
+        defaultHomeRemind.add(message);
+        JLabel frequency = new JLabel("Frequency");
+        defaultHomeRemind.add(frequency);
+        JLabel  manage = new JLabel("Manage");
+        defaultHomeRemind.add(manage);
+        content.add(defaultHomeRemind, BorderLayout.SOUTH);
+        setSize(1000,1000); 
+        setLocation(0,0); 
+        JPanel inputPanel = new JPanel(); 
+        inputPanel.setLayout(new GridLayout()); 
+        // adding text fields to corresponding array list here //
+        content.setBackground(Color.white);
+        setContentPane(content);
+        setSize(1440,2000);
+        setLocation(0,0);
+        pack();
+        setVisible(true);
+    }
+    public static void main (String[] args){
+        new homeRemind("R E M I N D");
+    }
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==quit){
+            System.exit(0);
+        }
+        else if(e.getSource()==manage){
+            // <insert code to transfer to a new JPanel for MANAGING ACCOUNT >
+        }
+        else if(e.getSource()==addButton){
+            //<insert code to transfer to a new JPanel for EDITING/ADDING REMINDERS >
+        }
+        else if(e.getSource()==remindersList){
+            //<insert code to remain/transfer to main JPanel THIS ONE>
+        }
+        else;
+    }
+}
